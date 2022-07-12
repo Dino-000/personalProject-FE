@@ -12,6 +12,7 @@ const AddCandidate = () => {
   const [gpa, setGPA] = useState("");
   //   const history = useHistory();
 
+  console.log(id);
   const saveCandidate = (e) => {
     e.preventDefault();
 
@@ -48,14 +49,16 @@ const AddCandidate = () => {
 
   useEffect(() => {
     if (id) {
-      CandidateService.get(id)
+      console.log(+id);
+      CandidateService.get(+id)
         .then((candidate) => {
-          setName(candidate.name);
-          setLocation(candidate.location);
-          setDoB(candidate.dateOfBirth);
-          setOccupation(candidate.occupation);
-          setSeniority(candidate.seniority);
-          setGPA(candidate.gpa);
+          console.log(candidate);
+          setName(candidate.data.name);
+          setLocation(candidate.data.location);
+          setDoB(candidate.data.dateOfBirth);
+          setOccupation(candidate.data.occupation);
+          setSeniority(candidate.data.seniority);
+          setGPA(candidate.data.gpa);
         })
         .catch((error) => {
           console.log("Something went wrong", error);

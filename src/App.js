@@ -15,10 +15,11 @@ function App() {
         <Route path="/" element={<Main />} exact />
         <Route path="/under-construction" element={<Underconstruction />} />
         <Route path="/candidate-add" element={<FormCandidateCreate />} />
-        <Route path="/candidate-list" element={<CandidateList />} />
+        <Route path="/candidates" element={<CandidateList />} />
         <Route path="/form" element={<CandidateList />} />
         <Route path="/" element={<CandidateList />} />
-        <Route path="/add-candidate" element={<AddCandidate />} />
+        <Route path="/candidate/add" element={<AddCandidate />} />
+        <Route path="/candidate/edit/:id" element={<AddCandidate />} />
       </Routes>
       <Footer />
     </div>

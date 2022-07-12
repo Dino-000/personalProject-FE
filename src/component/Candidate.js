@@ -37,7 +37,7 @@ const CandidateList = () => {
       <h3>List of Candidate</h3>
       <hr />
       <div>
-        <Link to="/add-candidate" className="btn btn-primary mb-2">
+        <Link to="/candidates/add" className="btn btn-primary mb-2">
           Add Candidate
         </Link>
         <table className="table table-bordered table-striped">
@@ -66,7 +66,7 @@ const CandidateList = () => {
                 <td>
                   <Link
                     className="btn btn-info"
-                    to={`/employees/edit/${candidate.id}`}
+                    to={`/candidate/edit/${candidate.id}`}
                   >
                     Update
                   </Link>
