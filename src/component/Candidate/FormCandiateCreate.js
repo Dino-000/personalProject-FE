@@ -1,9 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function FormCandidateCreate(props) {
+  if (props.sources.name === undefined) {
+    console.log("ok");
+  }
+  console.log(props.sources.name);
+  const [enteredName, setEnteredName] = useState("");
+  const [enteredDob, setEnteredDob] = useState("");
+  const [enteredLocation, setEnteredLocation] = useState("");
+  const [enteredOccupation, setEnteredOccupation] = useState("");
+  const [enteredSeniority, setEnteredSeniority] = useState("");
+  const [enteredGPA, setEnteredGPA] = useState("");
+
+  const nameChangeHandler = (event) => {
+    setEnteredName(event.target.value);
+  };
+  const dobChangeHandler = (event) => {
+    setEnteredDob(event.target.value);
+  };
+  const locationChangeHandler = (event) => {
+    setEnteredLocation(event.target.value);
+  };
+  const occupationChangeHandler = (event) => {
+    setEnteredOccupation(event.target.value);
+  };
+  const seniorityChangeHandler = (event) => {
+    setEnteredSeniority(event.target.value);
+  };
+  const gpaChangeHandler = (event) => {
+    setEnteredGPA(event.target.value);
+  };
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    let newCandidate = {
+      name: enteredName,
+      dateOfBirth: enteredDob,
+      location: enteredLocation,
+      occupation: enteredOccupation,
+      seniority: enteredSeniority,
+      gpa: enteredGPA,
+    };
+
+    console.log(JSON.stringify(newCandidate));
+  };
+
   return (
     <div className="container">
-      <form action="">
+      <form action="" onSubmit={submitHandler}>
         <fieldset>
           <legend>Candidate Personal Information</legend>
 
@@ -17,6 +62,8 @@ export default function FormCandidateCreate(props) {
               class="form-label"
               id="candidate-name"
               placeholder="Ex: Susan Boyce "
+              onChange={nameChangeHandler}
+              value={enteredName}
             />
           </div>
           <div className="mb-3">
@@ -28,9 +75,9 @@ export default function FormCandidateCreate(props) {
               name="candidate-dob"
               className="form-control"
               id="candidate-dob"
-              value="2000-01-01"
               min="1940-01-01"
               max="2002-01-01"
+              onChange={dobChangeHandler}
             />
           </div>
           <div className="mb-3">
@@ -41,6 +88,7 @@ export default function FormCandidateCreate(props) {
               class="form-select"
               name="candidate-location"
               id="candidate-location"
+              onChange={locationChangeHandler}
             >
               <optgroup label="Domestic areas">
                 <option value="Ho Chi Minh City">Ho Chi Minh City</option>
@@ -66,6 +114,7 @@ export default function FormCandidateCreate(props) {
               className="form-control"
               id="candidate-occupation"
               placeholder="Ex: Digital Marketing Specialist "
+              onChange={occupationChangeHandler}
             />
           </div>
           <div className="mb-3">
@@ -76,6 +125,7 @@ export default function FormCandidateCreate(props) {
               name="candidate-seniority"
               class="form-select"
               id="candidate-seniority"
+              onChange={seniorityChangeHandler}
             >
               <option value="Internship">Internship</option>
               <option value="Fresher">Fresher</option>
@@ -98,8 +148,12 @@ export default function FormCandidateCreate(props) {
               id="candidate-gpa"
               min={0}
               max={10}
+              onChange={gpaChangeHandler}
             />
           </div>
+          <button type="submit" class="btn btn-primary mb-2">
+            Add New Candidate
+          </button>
         </fieldset>
       </form>
     </div>
