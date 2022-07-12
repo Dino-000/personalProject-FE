@@ -12,7 +12,6 @@ const AddCandidate = () => {
   const [gpa, setGPA] = useState("");
   //   const history = useHistory();
 
-  console.log(id);
   const saveCandidate = (e) => {
     e.preventDefault();
 
