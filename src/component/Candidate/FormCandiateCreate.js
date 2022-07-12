@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 
 export default function FormCandidateCreate(props) {
-  if (props.sources.name === undefined) {
-    console.log("ok");
-  }
-  console.log(props.sources.name);
   const [enteredName, setEnteredName] = useState("");
   const [enteredDob, setEnteredDob] = useState("");
   const [enteredLocation, setEnteredLocation] = useState("");

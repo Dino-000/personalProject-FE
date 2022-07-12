@@ -1,6 +1,6 @@
 export default function CandidateInfo(props) {
   return (
-    <li className="container row">
+    <li key={props.sources.id.toString()} className="container row">
       <div className="col-1">{props.sources.id}</div>
       <div className="col-2">{props.sources.name}</div>
       <div className="col-2">{props.sources.dateOfBirth}</div>

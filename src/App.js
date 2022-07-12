@@ -5,9 +5,8 @@ import Main from "./component/Main/Main";
 import { Route, Routes } from "react-router-dom";
 import Underconstruction from "./component/UnderContruction/Underconstruction";
 import FormCandidateCreate from "./component/Candidate/FormCandiateCreate";
-import CandidateList from "./component/Candidate/CandidateList";
-import { CandidateData } from "./component/Candidate/Candidate";
-
+import CandidateList from "./component/Candidate";
+import AddCandidate from "./component/AddCandidate";
 function App() {
   return (
     <div className="App">
@@ -15,16 +14,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} exact />
         <Route path="/under-construction" element={<Underconstruction />} />
-        <Route
-          path="/candidate-add"
-          element={<FormCandidateCreate sources={CandidateData[0]} />}
-        />
-        <Route
-          path="/candidate-list"
-          element={<CandidateList sources={CandidateData} />}
-        />
+        <Route path="/candidate-add" element={<FormCandidateCreate />} />
+        <Route path="/candidate-list" element={<CandidateList />} />
+        <Route path="/form" element={<CandidateList />} />
+        <Route path="/" element={<CandidateList />} />
+        <Route path="/add-candidate" element={<AddCandidate />} />
       </Routes>
-      <FormCandidateCreate />
       <Footer />
     </div>
   );
