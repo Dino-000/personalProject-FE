@@ -1,0 +1,13 @@
+.content--addition--rating{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.stakeholder_logo {
+   text-align: right;
+}
+
+.content--addition{
+    margin: 10% 0%;
+
+}

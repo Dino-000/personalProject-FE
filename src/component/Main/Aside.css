@@ -1,0 +1,12 @@
+.aside--image-main{
+    position: relative;
+    /*left:65%;*/
+     z-index:1;
+}
+
+.aside--image-background{
+     position: absolute;
+    top: 10%;
+    left: 1%;
+    /* right: 0.1%; */
+}

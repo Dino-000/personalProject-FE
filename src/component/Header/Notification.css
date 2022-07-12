@@ -1,0 +1,12 @@
+.greeting {
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.greeting a, .greeting i{
+    color: RGB(148, 132, 241);
+}
+
+.greeting a sup:hover{
+    text-decoration: underline;
+}

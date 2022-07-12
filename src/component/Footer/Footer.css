@@ -1,0 +1,22 @@
+footer {
+    background: #001a26;
+    color: white;
+}
+
+
+.footer--content h2{
+    color: #02a9f7;
+}
+.footer--content-services-icon i{
+    color: #02a9f7;
+    margin: 20px;
+    font-size: 2em;
+}
+
+.footer--ccertificates img {
+    width: 100%;
+}
+
+sup{
+    font-size: xx-small;
+}
