@@ -91,14 +91,26 @@ const AddCandidate = () => {
           />
         </div>
         <div className="form-group">
-          <input
-            type="text"
-            className="form-control col-4"
-            id="location"
+          <select
+            class="form-control col-4 form-select"
+            name="candidate-location"
+            id="candidate-location"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            placeholder="Enter Location"
-          />
+          >
+            <optgroup label="Domestic areas">
+              <option value="Ho Chi Minh City">Ho Chi Minh City</option>
+              <option value="Ha Noi City">Ha Noi City</option>
+              <option value="Da Nang City">Da Nang City</option>
+              <option value="Can Tho City">Can Tho City</option>
+            </optgroup>
+            <optgroup label="Foreign areas">
+              <option value="Singapore">Singapore</option>
+              <option value="Thailand">Thailand</option>
+              <option value="India">India</option>
+              <option value="Zurich">Zurich</option>
+            </optgroup>
+          </select>
         </div>
         <div className="form-group">
           <input
@@ -111,14 +123,22 @@ const AddCandidate = () => {
           />
         </div>
         <div className="form-group">
-          <input
-            type="text"
-            className="form-control col-4"
-            id="seniority"
+          <select
+            name="candidate-seniority"
+            class="form-control col-4 form-select"
+            id="candidate-seniority"
             value={seniority}
             onChange={(e) => setSeniority(e.target.value)}
-            placeholder="Enter seniority"
-          />
+          >
+            <option value="Internship">Internship</option>
+            <option value="Fresher">Fresher</option>
+            <option value="Associate">Associate</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Senior">Senior</option>
+            <option value="Lead">Lead</option>
+            <option value="Manager">Manager</option>
+            <option value="C-level">C-level</option>
+          </select>
         </div>
         <div className="form-group">
           <input
@@ -138,7 +158,11 @@ const AddCandidate = () => {
         </div>
       </form>
       <hr />
-      <Link to="/">Back to List</Link>
+      <Link to="/candidates">
+        <button type="button" class="btn btn-warning">
+          Back to List
+        </button>
+      </Link>
     </div>
   );
 };

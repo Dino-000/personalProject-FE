@@ -9,28 +9,28 @@ export default function Navbar() {
           <li className="nav-item">
             <div className="nav-link">
               <h5>
-                <Link to="/under-construction">Product</Link>
+                <Link to="/candidates">Product</Link>
               </h5>
             </div>
           </li>
           <li className="nav-item">
             <div className="nav-link">
               <h5>
-                <Link to="/under-construction">Solution</Link>
+                <Link to="/skillsets">Solution</Link>
               </h5>
             </div>
           </li>
           <li className="nav-item">
             <div className="nav-link">
               <h5>
-                <Link to="/under-construction">Pricing</Link>
+                <Link to="/underconstruction">Pricing</Link>
               </h5>
             </div>
           </li>
           <li className="nav-item">
             <div className="nav-link">
               <h5>
-                <Link to="/under-construction">About Us</Link>
+                <Link to="/underconstruction">About Us</Link>
               </h5>
             </div>
           </li>

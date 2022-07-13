@@ -66,7 +66,7 @@ const CandidateList = () => {
                 <td>
                   <Link
                     className="btn btn-info"
-                    to={`/candidate/edit/${candidate.id}`}
+                    to={`/candidates/edit/${candidate.id}`}
                   >
                     Update
                   </Link>

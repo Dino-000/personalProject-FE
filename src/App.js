@@ -15,16 +15,15 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Main />} exact />
-        <Route path="/under-construction" element={<Underconstruction />} />
+        <Route path="/underconstruction" element={<Underconstruction />} />
         <Route path="/candidate-add" element={<FormCandidateCreate />} />
         <Route path="/candidates" element={<CandidateList />} />
-        <Route path="/form" element={<CandidateList />} />
-        <Route path="/candidate/add" element={<AddCandidate />} />
-        <Route path="/candidate/edit/:id" element={<AddCandidate />} />
-        <Route path="/skillSets" element={<SkillSetList />} />
+        <Route path="/candidates/add" element={<AddCandidate />} />
+        <Route path="/candidates/edit/:id" element={<AddCandidate />} />
+        <Route path="/skillsets" element={<SkillSetList />} />
 
-        <Route path="/skillSets/add" element={<AddSkillSet />} />
-        <Route path="/skillSets/edit/:id" element={<AddSkillSet />} />
+        <Route path="/skillsets/add" element={<AddSkillSet />} />
+        <Route path="/skillsets/edit/:id" element={<AddSkillSet />} />
       </Routes>
       <Footer />
     </div>

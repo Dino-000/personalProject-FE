@@ -111,7 +111,11 @@ const AddSkillSet = () => {
         </div>
       </form>
       <hr />
-      <Link to="/">Back to List</Link>
+      <Link to="/skillsets">
+        <button type="button" class="btn btn-warning">
+          Back to List
+        </button>
+      </Link>
     </div>
   );
 };
