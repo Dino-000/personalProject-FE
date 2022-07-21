@@ -1,34 +1,31 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import CandidateService from "../services/Candidate.service";
+import { useDispatch, useSelector } from "react-redux";
+import { candidateActions } from "../store/candidate";
 
 const AddCandidate = () => {
+  const dispatch = useDispatch();
+  const candidate = useSelector((state) => state.candidate);
+
   const { id } = useParams();
-  const [name, setName] = useState("");
-  const [dob, setDoB] = useState("");
-  const [location, setLocation] = useState("");
-  const [occupation, setOccupation] = useState("");
-  const [seniority, setSeniority] = useState("");
-  const [gpa, setGPA] = useState("");
-  //   const history = useHistory();
 
   const saveCandidate = (e) => {
     e.preventDefault();
 
     const Candidate = {
-      name: name,
-      dateOfBirth: dob,
-      location: location,
-      occupation: occupation,
-      seniority: seniority,
-      gpa: gpa,
+      name: candidate.name,
+      dateOfBirth: candidate.dob,
+      location: candidate.location,
+      occupation: candidate.occupation,
+      seniority: candidate.seniority,
+      gpa: candidate.gpa,
     };
     if (id) {
       //update
       CandidateService.update(id, Candidate)
         .then((response) => {
           console.log("Candidate data updated successfully", response.data);
-          //   history.push("/");
         })
         .catch((error) => {
           console.log("Something went wrong", error);
@@ -38,7 +35,6 @@ const AddCandidate = () => {
       CandidateService.create(Candidate)
         .then((response) => {
           console.log("Candidate added successfully", response.data);
-          //   history.push("/");
         })
         .catch((error) => {
           console.log("something went wrong", error);
@@ -48,22 +44,49 @@ const AddCandidate = () => {
 
   useEffect(() => {
     if (id) {
-      console.log(+id);
+      console.log("This is id: " + id);
       CandidateService.get(+id)
-        .then((candidate) => {
-          console.log(candidate);
-          setName(candidate.data.name);
-          setLocation(candidate.data.location);
-          setDoB(candidate.data.dateOfBirth);
-          setOccupation(candidate.data.occupation);
-          setSeniority(candidate.data.seniority);
-          setGPA(candidate.data.gpa);
+        .then((candidateInfo) => {
+          console.log(candidateInfo.data);
+          dispatch(candidateActions.setName(candidateInfo.data.name));
+          dispatch(candidateActions.setLocation(candidateInfo.data.location));
+          dispatch(candidateActions.setDob(candidateInfo.data.dateOfBirth));
+          dispatch(
+            candidateActions.setOccupation(candidateInfo.data.occupation)
+          );
+          dispatch(candidateActions.setSeniority(candidateInfo.data.seniority));
+          dispatch(candidateActions.setGpa(candidateInfo.data.gpa));
         })
         .catch((error) => {
           console.log("Something went wrong", error);
         });
     }
   }, []);
+
+  const nameChangeHandler = (e) => {
+    dispatch(candidateActions.setName(e.target.value));
+    console.log("name is changing to: " + e.target.value);
+  };
+  const dobChangeHandler = (e) => {
+    dispatch(candidateActions.setDob(e.target.value));
+    console.log("dob is changing to: " + e.target.value);
+  };
+  const locationChangeHandler = (e) => {
+    dispatch(candidateActions.setLocation(e.target.value));
+    console.log("location is changing to: " + e.target.value);
+  };
+  const occupationChangeHandler = (e) => {
+    dispatch(candidateActions.setOccupation(e.target.value));
+    console.log("occupation is changing to: " + e.target.value);
+  };
+  const seniorityChangeHandler = (e) => {
+    dispatch(candidateActions.setSeniority(e.target.value));
+    console.log("seniority is changing to: " + e.target.value);
+  };
+  const gpaChangeHandler = (e) => {
+    dispatch(candidateActions.setGpa(e.target.value));
+    console.log("gpa is changing to: " + e.target.value);
+  };
 
   return (
     <div className="container">
@@ -75,8 +98,8 @@ const AddCandidate = () => {
             type="text"
             className="form-control col-4"
             id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={candidate.name}
+            onChange={nameChangeHandler}
             placeholder="Enter name"
           />
         </div>
@@ -85,8 +108,8 @@ const AddCandidate = () => {
             type="date"
             className="form-control col-4"
             id="date-of-birth"
-            value={dob}
-            onChange={(e) => setDoB(e.target.value)}
+            value={candidate.dob}
+            onChange={dobChangeHandler}
             placeholder="Enter date of birth"
           />
         </div>
@@ -95,8 +118,8 @@ const AddCandidate = () => {
             class="form-control col-4 form-select"
             name="candidate-location"
             id="candidate-location"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
+            value={candidate.location}
+            onChange={locationChangeHandler}
           >
             <optgroup label="Domestic areas">
               <option value="Ho Chi Minh City">Ho Chi Minh City</option>
@@ -117,8 +140,8 @@ const AddCandidate = () => {
             type="text"
             className="form-control col-4"
             id="occupation"
-            value={occupation}
-            onChange={(e) => setOccupation(e.target.value)}
+            value={candidate.occupation}
+            onChange={occupationChangeHandler}
             placeholder="Enter Occupation"
           />
         </div>
@@ -127,8 +150,8 @@ const AddCandidate = () => {
             name="candidate-seniority"
             class="form-control col-4 form-select"
             id="candidate-seniority"
-            value={seniority}
-            onChange={(e) => setSeniority(e.target.value)}
+            value={candidate.seniority}
+            onChange={seniorityChangeHandler}
           >
             <option value="Internship">Internship</option>
             <option value="Fresher">Fresher</option>
@@ -145,9 +168,9 @@ const AddCandidate = () => {
             type="number"
             className="form-control col-4"
             id="gpa"
-            value={gpa}
+            value={candidate.gpa}
             min={0}
-            onChange={(e) => setGPA(e.target.value)}
+            onChange={gpaChangeHandler}
             placeholder="Enter gpa"
           />
         </div>
